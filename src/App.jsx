@@ -4,6 +4,11 @@ import CoreConcept from './components/CoreConcept';
 import TabButton from './components/TabButton';
 
 function App() {
+  // Inner function for prop
+  function handleClick(text) {
+    alert(`Hello ${text}!! :)`);
+  }
+
   // Return statement
   return (
     <div>
@@ -34,10 +39,11 @@ function App() {
         <section id="examples">
           <h2>Examples</h2>
           <menu>
-            <TabButton>Components</TabButton>
-            <TabButton>JSX</TabButton>
-            <TabButton>Props</TabButton>
-            <TabButton>State</TabButton>
+            {/** You can just call handleClick or using () => handleClick(args) if you want to pass argument */}
+            <TabButton onClick={() => handleClick("Components")}>Components</TabButton>
+            <TabButton onClick={() => handleClick("JSX")}>JSX</TabButton>
+            <TabButton onClick={() => handleClick("Props")}>Props</TabButton>
+            <TabButton onClick={() => handleClick("State")}>State</TabButton>
           </menu>
         </section>
       </main>
