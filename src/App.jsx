@@ -1,13 +1,19 @@
-import { CORE_CONCEPTS } from './data';
+import { useState } from 'react';                   // Anything prefix with the keyword use, it is a React Hook
+import { CORE_CONCEPTS, EXAMPLES } from './data';
 import Header from './components/Header/Header';
 import CoreConcept from './components/CoreConcept';
 import TabButton from './components/TabButton';
 
 function App() {
-  // Inner function for prop
+  // Using useState
+  const [selectedTopic, setSelectedTopic] = useState("components");
+
+  // Inner function for prop - not used anymore since I am using useState
+  /**
   function handleClick(text) {
-    alert(`Hello ${text}!! :)`);
+    setSelectedTopic(text);
   }
+  */
 
   // Return statement
   return (
@@ -40,11 +46,18 @@ function App() {
           <h2>Examples</h2>
           <menu>
             {/** You can just call handleClick or using () => handleClick(args) if you want to pass argument */}
-            <TabButton onClick={() => handleClick("Components")}>Components</TabButton>
-            <TabButton onClick={() => handleClick("JSX")}>JSX</TabButton>
-            <TabButton onClick={() => handleClick("Props")}>Props</TabButton>
-            <TabButton onClick={() => handleClick("State")}>State</TabButton>
+            <TabButton onClick={() => setSelectedTopic("components")}>Components</TabButton>
+            <TabButton onClick={() => setSelectedTopic("jsx")}>JSX</TabButton>
+            <TabButton onClick={() => setSelectedTopic("props")}>Props</TabButton>
+            <TabButton onClick={() => setSelectedTopic("state")}>State</TabButton>
           </menu>
+          <div id="tab-content">
+            <h3>{EXAMPLES[selectedTopic].title}</h3>
+            <p>{EXAMPLES[selectedTopic].description}</p>
+            <pre>
+              <code>{EXAMPLES[selectedTopic].code}</code>
+            </pre>
+          </div>
         </section>
       </main>
     </div>
