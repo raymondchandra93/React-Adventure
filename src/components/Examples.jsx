@@ -1,6 +1,7 @@
 import { useState } from 'react';                   // Anything prefix with the keyword use, it is a React Hook
 import { EXAMPLES } from '../data.js';
 import TabButton from './TabButton';
+import Section from './Section.jsx';
 
 function Examples() {
     // Using useState
@@ -28,8 +29,7 @@ function Examples() {
     }
 
     return (
-        <section id="examples">
-            <h2>Examples</h2>
+        <Section title="Examples" id="examples">
             <menu>
                 {/** You can just call handleClick or using () => handleClick(args) if you want to pass argument */}
                 <TabButton isSelected={selectedTopic === 'components'} onClick={() => setSelectedTopic("components")}>Components</TabButton>
@@ -38,7 +38,7 @@ function Examples() {
                 <TabButton isSelected={selectedTopic === 'state'} onClick={() => setSelectedTopic("state")}>State</TabButton>
             </menu>
             {tabContent}
-        </section>
+        </Section>
     )
 }
 
